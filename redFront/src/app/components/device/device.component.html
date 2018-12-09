@@ -1,0 +1,125 @@
+<div style="background-image:url('../../../assets/photos/bedroom.jpg')">
+    <p-dataView [value]="devices">
+        <p-header>
+            <div class="ui-helper-clearfix">
+                <div class="ui-g">
+                    <!-- <div class="ui-g-12 ui-md-4">
+                <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
+            </div> -->
+                    <div class="ui-g-8 ui-md-8 filter-container">
+                        <div style="position:relative;text-align: center">
+                            <h3>List of Devices </h3>
+                            <!--Try to pass and the room-->
+                        </div>
+                    </div>
+                    <div class="ui-g-4 ui-md-4" style="text-align:right">
+                        <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
+                    </div>
+                </div>
+            </div>
+        </p-header>
+        <ng-template let-devices pTemplate="listItem">
+            <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9;">
+                <div class="ui-g-12 ui-md-3" style="text-align:center">
+                    <img src="assets/photos/{{ devices.image }}.jpg" style="max-height:110px">
+                </div>
+                <div class="ui-g-12 ui-md-8 car-details">
+                    <div class="ui-g">
+                        <div class="ui-g-2 ui-sm-6">Name: </div>
+                        <div class="ui-g-10 ui-sm-6"><b>{{ devices.name }}</b></div>
+
+                        <div class="ui-g-2 ui-sm-6">Type: </div>
+                        <div class="ui-g-10 ui-sm-6"><b>{{ devices.deviceType.typeName }}</b></div>
+
+                        <div class="ui-g-2 ui-sm-6">Status: </div>
+                        <div class="ui-g-10 ui-sm-6" *ngIf="devices.status && (devices.deviceType.typeName != 'Tent'
+                         && devices.deviceType.typeName != 'Door' ) "
+                            style="color: green"><b>ON</b></div>
+                        <div class="ui-g-10 ui-sm-6" *ngIf="!devices.status && (devices.deviceType.typeName != 'Tent'
+                    && devices.deviceType.typeName != 'Door' )"
+                            style="color: red"><b>OFF</b></div>
+
+                       
+
+                        <div class="ui-g-10 ui-sm-6" *ngIf="devices.status && (devices.deviceType.typeName == 'Tent' 
+                        || devices.deviceType.typeName == 'Door') "
+                            style="color: green"><b>OPEN</b></div>
+                        <div class="ui-g-10 ui-sm-6" *ngIf="!devices.status && (devices.deviceType.typeName == 'Tent' 
+                        || devices.deviceType.typeName == 'Door' )"
+                            style="color: red"><b>CLOSE</b></div>
+
+                        <!--<div class="ui-g-2 ui-sm-6">Information: </div>-->
+
+                    </div>
+
+                </div>
+                <div class="ui-g-12 ui-md-1 plus-icon">
+                    <button pButton type="button" icon="fa fa-plus" (click)="selectDevice($event, devices)" style="background-color: #f70000 ; border: #f70000"></button>
+                </div>
+            </div>
+        </ng-template>
+        <ng-template let-devices pTemplate="gridItem">
+            <div style="padding:.5em" class="ui-g-12 ui-md-6">
+                <p-panel [style]="{'text-align':'center'}">
+                    <p-header>{{ devices.name }}</p-header>
+                    <img src="assets/photos/{{ devices.image }}.jpg" width="60">
+                    <div class="device-detail">Type: {{ devices.deviceType.deviceType }}</div>
+                    <div class="device-detail" *ngIf="devices.status && (devices.deviceType.typeName != 'Tent'
+                        && devices.deviceType.typeName != 'Door') " style="color: green"><b>ON</b></div>
+                    <div class="device-detail" *ngIf="!devices.status && (devices.deviceType.typeName != 'Tent'
+                        && devices.deviceType.typeName != 'Door')" style="color: red"><b>OFF</b></div>
+
+
+
+                    <div class="device-detail" *ngIf="devices.status && devices.deviceType.typeName == 'Tent' 
+                            || devices.deviceType.typeName == 'Door' " style="color: green"><b>OPEN</b></div>
+                    <div class="device-detail" *ngIf="!devices.status && (devices.deviceType.typeName == 'Tent' 
+                        || devices.deviceType.typeName == 'Door' )" style="color: red"><b>CLOSE</b></div>
+                    <hr class="ui-widget-content" style="border-top:0">
+                    <button pButton type="button" icon='fa fa-plus' (click)="selectDevice($event, devices)" style="background-color: #f70000 ; border: #f70000"></button>
+                </p-panel>
+            </div>
+        </ng-template>
+
+
+
+
+    </p-dataView>
+</div>
+
+
+
+<p-dialog header="{{selectedDevice?.deviceType.typeName }} Details" [(visible)]="displayDialog" [responsive]="true"
+    showEffect="fade" [modal]="true" width="225" (onAfterHide)="onDialogHide()">
+    <div class="ui-g" *ngIf="selectedDevice">
+        <div class="ui-g-12" style="text-align:center">
+            <img src="assets/photos/{{selectedDevice?.image}}.jpg" style="max-height:80px;max-width: 80px">
+        </div>
+        <div class="ui-g-4">Name: </div>
+        <div class="ui-g-8">{{selectedDevice.name}}</div>
+
+        <div class="ui-g-4">Type: </div>
+        <div class="ui-g-8">{{selectedDevice.deviceType.typeName}}</div>
+
+        <div class="ui-g-4">Status: </div>
+        <div class="ui-g-4" *ngIf="selectedDevice.status && (selectedDevice.deviceType.typeName != 'Tent'
+        && selectedDevice.deviceType.typeName != 'Door') " style="color: green"><b>ON</b></div>
+    <div class="ui-g-4" *ngIf="!selectedDevice.status && (selectedDevice.deviceType.typeName != 'Tent'
+         && selectedDevice.deviceType.typeName != 'Door') " style="color: red"><b>OFF</b></div>
+
+        
+
+         <div class="ui-g-4" *ngIf="selectedDevice.status && (selectedDevice.deviceType.typeName == 'Tent' 
+         || selectedDevice.deviceType.typeName == 'Door') " style="color: green"><b>OPEN</b></div>
+         <div class="ui-g-4" *ngIf="!selectedDevice.status && (selectedDevice.deviceType.typeName == 'Tent' 
+        || selectedDevice.deviceType.typeName == 'Door' )" style="color: red"><b>CLOSE</b></div>
+
+        <div class="ui-g-4">
+            <p-inputSwitch [(ngModel)]="selectedDevice.status" (onChange)="handleChange($event)"></p-inputSwitch>
+        </div>
+        <div>
+            <button pButton type="button" label="Save" class="ui-button-rounded" style="margin-left: 110%;" (click)=saveChanges()></button>
+        </div>
+
+    </div>
+</p-dialog>

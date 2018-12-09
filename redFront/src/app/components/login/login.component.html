@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-sm-9 col-md-7 col-lg-5 mx-auto mainClass">
+    <div class="card card-signin my-5">
+      <div class="card-body">
+        <h5 class="card-title text-center">Sign In</h5>
+
+          <div class="form-label-group emailDiv">
+            <label for="inputUsername"  >Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username"  [(ngModel)]="user.username" required autofocus>
+          </div>
+
+          <div class="form-label-group pwdDiv">
+            <label for="inputPassword">Password</label>
+            <input type="password" id="inputPassword" class="form-control" placeholder="Password" type="text" [(ngModel)]="user.password" required>
+          </div>
+
+
+          <button class="btn btn-lg btn-primary btn-block text-uppercase btn-sing" type="submit" class="form-control"  (click)="login()" >Sign in</button>
+          <!-- <div *ngIf="invalidLogin" class="error">
+            <div>Invalid credentials.</div>
+          </div> -->
+
+      </div>
+    </div>
+  </div>
+</div>

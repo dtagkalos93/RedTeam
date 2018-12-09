@@ -1,0 +1,16 @@
+
+.card-body{
+  padding:15%;
+}
+
+.inputDiv {
+  margin-bottom: 3%;
+}
+
+.pwdDiv{
+  margin-bottom: 10%;
+}
+
+.btn-register{
+  background: red;
+}

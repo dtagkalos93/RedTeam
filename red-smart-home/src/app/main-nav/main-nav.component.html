@@ -1,0 +1,79 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+  >
+    <mat-toolbar>My DashBoard</mat-toolbar>
+    <mat-nav-list>
+       <mat-accordion>
+        <mat-expansion-panel >
+          <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+            <mat-panel-title>
+              User
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list dense>
+            <mat-list-item>
+              <a>New User</a>
+            </mat-list-item>
+            <mat-list-item>
+              <a>All User</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+              <mat-panel-title>
+                Device
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list dense>
+              <mat-list-item>
+                <a>New Device</a>
+              </mat-list-item>
+              <mat-list-item>
+                  <a>All Devices</a>
+              </mat-list-item>
+              <mat-list-item>
+                 <a>Assing Devices</a>
+              </mat-list-item>
+            </mat-nav-list>
+          </mat-expansion-panel>
+          <mat-expansion-panel>
+              <mat-expansion-panel-header fxLayout="row" [expandedHeight]="expandHeight" [collapsedHeight]="collapseHeight">
+                <mat-panel-title>
+                  Room
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-nav-list dense>
+                <mat-list-item>
+                  <a>New Room</a>
+                </mat-list-item>
+                <mat-list-item>
+                  <a>All Rooms</a>
+                </mat-list-item>
+              </mat-nav-list>
+            </mat-expansion-panel>
+      </mat-accordion>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset$ | async)"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>{{ title }}</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+  </mat-sidenav-content>
+</mat-sidenav-container>

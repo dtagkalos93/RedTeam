@@ -1,0 +1,19 @@
+.mainClass{
+  padding: 11%;
+}
+
+.card-body{
+  padding:15%;
+}
+
+.emailDiv {
+  margin-bottom: 5%;
+}
+
+.pwdDiv{
+  margin-bottom: 10%;
+}
+
+.btn-sing{
+  background: grey;
+}

@@ -1,0 +1,25 @@
+.mainPage {
+  display: flex;
+  justify-content: center;
+  padding:25%
+}
+
+.logIn{
+  font-family: Century Gothic;
+  font-size: 17px;
+  text-align: center;
+  width: 19%;
+  padding:0.7%;
+  margin-right: 5%;
+}
+
+.signUp{
+  font-family: Century Gothic;
+  font-size: 17px;
+  text-align: center;
+  width: 19%;
+  padding:0.7%;
+  background: #ac0f1f;
+}
+
+

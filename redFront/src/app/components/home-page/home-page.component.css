@@ -1,0 +1,33 @@
+.mainPage {
+  display: flex;
+  justify-content: center;
+  padding:22%;
+  background-image: url("../../../assets/photos/smart-home.jpg");
+ /* Full height */
+ height: 87%;
+
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: cover;
+}
+
+.logIn{
+  font-family: Century Gothic;
+  font-size: 17px;
+  text-align: center;
+  width: 19%;
+  padding:0.7%;
+  margin-right: 5%;
+  background: grey;
+}
+
+.signUp{
+  font-family: Century Gothic;
+  font-size: 17px;
+  text-align: center;
+  width: 19%;
+  padding:0.7%;
+  background: #ac0f1f;
+}
+

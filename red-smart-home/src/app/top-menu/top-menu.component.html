@@ -1,0 +1,35 @@
+<mat-tab-group>
+  <mat-tab label="Kitchen">
+    <mat-list>
+      <mat-list-item *ngFor="let device of devices">
+          <a matLine href="...">{{ device.name }}</a>
+          <button mat-icon-button (click)="showInfo(link)">
+             <mat-icon>info</mat-icon>
+          </button>
+          <mat-button-toggle (click)="showStatus(link)">
+            Status
+          </mat-button-toggle>
+      </mat-list-item>
+     </mat-list>     
+  </mat-tab>
+  <mat-tab label="Bedroom">
+    <h1>Bedroom</h1>
+    <p>Bedroom</p>
+  </mat-tab>
+  <mat-tab label="Bathroom">
+    <h1>Bathroom</h1>
+    <p>Bathroom</p>
+  </mat-tab>
+  <mat-tab label="LivingRoom">
+    <h1>Living Room</h1>
+    <p>Living Room</p>
+  </mat-tab>
+  <mat-tab label="Balcony">
+    <h1>Balcony</h1>
+    <p>Balcony</p>
+  </mat-tab>
+  <mat-tab label="Garage">
+    <h1>Garage</h1>
+    <p>Garage</p>
+  </mat-tab>
+</mat-tab-group>
